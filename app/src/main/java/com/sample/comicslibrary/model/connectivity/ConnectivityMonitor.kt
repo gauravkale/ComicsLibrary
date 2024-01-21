@@ -3,6 +3,8 @@ package com.sample.comicslibrary.model.connectivity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.sample.comicslibrary.SingletonHolder
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +19,7 @@ class ConnectivityMonitor private constructor(context: Context): ConnectivityObs
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun observe(): Flow<ConnectivityObservable.Status> = callbackFlow {
         val callback = object: ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
