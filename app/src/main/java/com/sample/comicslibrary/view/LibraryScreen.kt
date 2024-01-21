@@ -1,7 +1,9 @@
 package com.sample.comicslibrary.view
 
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -33,6 +35,7 @@ import com.sample.comicslibrary.model.api.NetworkResult
 import com.sample.comicslibrary.model.connectivity.ConnectivityObservable
 import com.sample.comicslibrary.viewmodel.LibraryApiViewModel
 
+@RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun LibraryScreen(
     navController: NavHostController,
